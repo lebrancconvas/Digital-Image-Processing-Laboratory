@@ -4,7 +4,8 @@ import java.io.*;
 import javax.imageio.*;
 
 public class ImageManager {
-	private BufferedImage img;	
+	private BufferedImage img;
+	private BufferedImage original;	
 	public int width, height, bitdepth; 
 
 	public ImageManager() {
@@ -27,7 +28,24 @@ public class ImageManager {
 		bitdepth = img.getColorModel().getPixelSize(); // Get Bits per pixel value from Image that we read. 
 
 		System.out.println("Image Width: " + width + "\nImage Height: " + height + "\nBitDepth: " + bitdepth);
+		
+		original = new BufferedImage(width, height, img.getType()); 
+
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x < width; x++) {
+				original.setRGB(x, y, img.getRGB(x, y));
+			}
+		}
+		
 		return true;	
+	}
+
+	public void restoreToOriginal() {
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x < width; x++) {
+				img.setRGB(x, y, original.getRGB(x, y)); 
+			}
+		}
 	}
 
 	/* Write Image */
@@ -44,4 +62,57 @@ public class ImageManager {
 
 		return true; // If all processes work, It will return true. 
 	}
+
+	public void convertToRed() {
+		if(img == null) return;
+
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x < width; x++) {
+				int color = img.getRGB(x, y);
+				int b = color & 0xFF;
+				int g = (color >> 8) & 0xFF;
+				int r = (color >> 16) & 0xFF;
+
+				color = (r << 16) | (0 << 8) | 0;
+
+				img.setRGB(x, y, color); 
+			}
+		}
+	}
+
+	public void convertToBlue() {
+		if(img == null) return;
+
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x < width; x++) {
+				int color = img.getRGB(x, y);
+				int b = color & 0xFF;
+				int g = (color >> 8) & 0xFF;
+				int r = (color >> 16) & 0xFF;
+
+				color = (0 << 16) | (0 << 8) | b;
+
+				img.setRGB(x, y, color); 
+			}
+		}
+	}
+
+	public void convertToGreen() {
+		if(img == null) return;
+
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x < width; x++) {
+				int color = img.getRGB(x, y);
+				int b = color & 0xFF;
+				int g = (color >> 8) & 0xFF;
+				int r = (color >> 16) & 0xFF;
+
+				color = (0 << 16) | (g << 8) | 0; 
+
+				img.setRGB(x, y, color); 
+			}
+		}
+	}
+
+	
 } 
