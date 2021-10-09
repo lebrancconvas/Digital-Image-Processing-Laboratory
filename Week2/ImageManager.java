@@ -114,5 +114,72 @@ public class ImageManager {
 		}
 	}
 
+	public void convertToBlack() {
+		if(img == null) return;
+
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x < width; x++) {
+				int color = img.getRGB(x, y);
+				int b = color & 0xFF;
+				int g = (color >> 8) & 0xFF;
+				int r = (color >> 16) & 0xFF;
+
+				color = (0 << 16) | (0 << 8) | 0; 
+
+				img.setRGB(x, y, color); 
+			}
+		}
+	}
+
+	public void convertToViolet() {
+		if(img == null) return;
+
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x < width; x++) {
+				int color = img.getRGB(x, y);
+				int b = color & 0xFF;
+				int g = (color >> 8) & 0xFF;
+				int r = (color >> 16) & 0xFF;
+
+				color = (r << 16) | (0 << 8) | b;
+
+				img.setRGB(x, y, color); 
+			}
+		}
+	}
+
+	public void convertToYellow() {
+		if(img == null) return;
+
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x < width; x++) {
+				int color = img.getRGB(x, y);
+				int b = color & 0xFF;
+				int g = (color >> 8) & 0xFF;
+				int r = (color >> 16) & 0xFF;
+
+				color = (r << 16) | (g << 8) | 0; 
+
+				img.setRGB(x, y, color); 
+			}
+		}
+	}
+
+	public void convertToSkyBlue() {
+		if(img == null) return;
+
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x < width; x++) {
+				int color = img.getRGB(x, y);
+				int b = color & 0xFF;
+				int g = (color >> 8) & 0xFF;
+				int r = (color >> 16) & 0xFF;
+
+				color = (0 << 16) | (g << 8) | b;
+
+				img.setRGB(x, y, color); 
+			}
+		}
+	}
 	
 } 

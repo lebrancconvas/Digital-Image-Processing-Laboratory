@@ -18,6 +18,18 @@ public class Week2_Lab {
 		img2.writeImage("images/fullofblue.bmp"); 
 		img2.restoreToOriginal();
 		img2.convertToGreen(); 
-		img2.writeImage("images/fullofgreen.bmp"); 
+		img2.writeImage("images/fullofgreen.bmp");
+		img2.restoreToOriginal();
+		img2.convertToBlack();
+		img2.writeImage("images/fullofblack.bmp");  
+		img2.restoreToOriginal();
+		img2.convertToViolet();
+		img2.writeImage("images/fullofviolet.bmp"); 
+		img2.restoreToOriginal();
+		img2.convertToYellow();
+		img2.writeImage("images/fullofyellow.bmp"); 
+		img2.restoreToOriginal();
+		img2.convertToSkyBlue();
+		img2.writeImage("images/fullofskyblue.bmp"); 
 	}
 }
