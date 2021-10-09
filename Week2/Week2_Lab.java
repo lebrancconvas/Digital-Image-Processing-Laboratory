@@ -44,7 +44,7 @@ public class Week2_Lab {
 
 		ImageManager prc = new ImageManager();
 		prc.readImage("images/puertoricoflag.bmp");
-		prc.writeImage("images/prc_original.bmp"); 
+		prc.writeImage("images/prc_original.bmp");
 
 		ImageManager solar = new ImageManager();
 		solar.readImage("images/solarsystem.bmp");
@@ -54,5 +54,15 @@ public class Week2_Lab {
 		solar.restoreToOriginal();
 		solar.convertToRed();
 		solar.writeImage("images/output/solar_red.bmp");
+		solar.restoreToOriginal();
+
+		ImageManager parrot = new ImageManager();
+		parrot.readImage("images/parrot.bmp");
+		parrot.writeImage("images/output/parrot_original.bmp");
+		parrot.convertToBlue();
+		parrot.writeImage("images/output/parrot_blue.bmp");
+		parrot.restoreToOriginal();
+		parrot.convertToViolet();
+		parrot.writeImage("images/output/parrot_violet.bmp");
 	}
 }

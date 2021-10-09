@@ -182,4 +182,13 @@ public class ImageManager {
 		}
 	}
 	
+	public void rgbNum() {
+		if(img == null) return;
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x < width; x++) {
+				int color = img.getRGB(x, y);
+				System.out.println(color);
+			}
+		}
+	}
 } 
